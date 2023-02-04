@@ -7,13 +7,13 @@ class BooksController < ApplicationController
     book = Book.new(book_params)
 
    if book.save
-   　redirect_to book_puth(@book)
+   　redirect_to book_path(book)
    else
-     render:new
+     render:index
      @books = Book.all.order(id: :asc)
    end
   end
-  
+
   def index
     @books = Book.all
   end
@@ -23,11 +23,11 @@ class BooksController < ApplicationController
   end
 
   def edit
-    
+
   end
 
   private
   def book_params
-    params.require(:book).permit(:title,:body)
+    params.require(:book).permit(:title, :body)
   end
 end

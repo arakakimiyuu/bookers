@@ -4,55 +4,28 @@
     <th>Title</th>
     <th>Body</th>
     <th colspan="3"></th>
-  <% @books.each do |book| %>
-    <span>
-    <%= link_to "Show", "/books/#{book.id}" %>
-    </span>
-  <% end %>
-  </tr>
-  <tr>
-    <td>リーダブルコード</td>
-    <td>より良いコードを書くためのシンプルで実践的なテクニック</td>
-    <td>
 
-    </td>
-  </tr>
+  <% @books.each do |book| %>
   <tr>
-    <td>トラブル知らずのシステム設計</td>
-    <td>システム設計の要点を図解で説明してくれます</td>
-    <td></td>
+     <td><%=link_to book.title book_path %></td>
+     <td><%=link_to book.body book_path %></td>
+     <td><%= link_to "Show", "/books/#{book.id}" %></td>
+     <td><%= link_to "Edit", "/books/#{book.id}" %></td>
+     <td> <%=link_to "Destroy", "/books/#{book.id}" %></td>
   </tr>
-  <tr>
-    <td>たのしいRuby</td>
-    <td>Rubyの入門におすすめです</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>入門Git</td>
-    <td>gitについての基本操作から内部構造まで解説してくれます</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>アルゴリズム図鑑</td>
-    <td>アルゴリズムについてカラーイラストでしっかり解説してくれます</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>達人プログラマー</td>
-    <td>プログラマ入門者は必読！</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>データベース実践入門</td>
-    <td>効率的なSQL文を教えてくれます</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>月姫</td>
-    <td>a peace of glass moon</td>
-    <td></td>
-   </tr>
+  <% end %>
 </table>
 
+<h2>New books</h2>
+<%=form_with model: @book do |f| %>
+
+  <h4>Title</h4>
+  <%=f.text_field:title %>
+
+  <h4>Body</h4>
+  <%=f.text_area:body %>
+
+  <br><%=f.submit 'Create Book' %></br>
+<% end %>
 
 
