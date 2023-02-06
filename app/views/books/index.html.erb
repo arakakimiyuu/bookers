@@ -17,6 +17,11 @@
 </table>
 
 <h2>New books</h2>
+<% if @book.errors.any? %>
+
+<% end %>
+
+
 <%=form_with model: @book, url:'/books', method: :post do |f| %>
 
   <h4>Title</h4>
